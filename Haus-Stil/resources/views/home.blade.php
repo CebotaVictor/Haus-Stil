@@ -1,2 +1,2 @@
-@extends('mainlayout')
+@extends('layout.mainlayout')
     

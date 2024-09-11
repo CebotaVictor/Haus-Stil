@@ -104,6 +104,6 @@
 		<!-- End Footer Section -->	
 
 
-		<script {{asset(path: 'public/js/bootstrap.bundle.min.js')}}></script>
-		<script {{asset(path: 'public/js/tiny-slider.js')}}></script>
-		<script {{asset(path: 'public/js/custom.js')}}></script>
+		<script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+		<script src="{{ asset('js/tiny-slider.js') }}"></script>
+		<script src="{{ asset('js/custom.js') }}"></script>
