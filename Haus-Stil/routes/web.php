@@ -2,12 +2,23 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+use App\Http\Controllers\HomeController;
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 
-Route::get('/home', function () {
-    return view('home');
-});
+Route::controller(HomeController::class)->group(function () {
+    Route::get('/', 'home');    
+    Route::get('/about', 'about'); 
+    Route::get('/shop', 'shop');    
+    Route::get('/cart', 'cart'); 
+    Route::get('/checkout', 'checkout');    
+    Route::get('/blog', 'blog'); 
+    Route::get('/contact', 'contact');    
+    Route::get('/services', 'services'); 
+    Route::get('/confirmed', 'confirmed'); 
+}
 
+);
