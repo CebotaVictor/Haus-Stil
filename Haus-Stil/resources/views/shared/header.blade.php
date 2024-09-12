@@ -23,6 +23,12 @@
         <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
             <li><a class="nav-link" href="#"><img src="images/user.svg"></a></li>
             <li><a class="nav-link" href="{{url('cart')}}"><img src="images/cart.svg"></a></li>
+            <li class="@yield('login')">
+                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+            </li>
+            <li class="@yield('register')" >
+                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+            </li>
         </ul>
     </div>
 </div>

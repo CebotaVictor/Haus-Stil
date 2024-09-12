@@ -44,4 +44,8 @@ class HomeController extends Controller
     public function confirmed(){
         return view("home.confirmed");
     }
+
+    // public function about(){
+
+    // }
 }

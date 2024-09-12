@@ -4,9 +4,6 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 
 Route::controller(HomeController::class)->group(function () {
@@ -22,3 +19,8 @@ Route::controller(HomeController::class)->group(function () {
 }
 
 );
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\AuthController::class, 'index'])->name('home');
