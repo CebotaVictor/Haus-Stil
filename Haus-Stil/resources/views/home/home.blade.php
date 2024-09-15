@@ -2,6 +2,7 @@
     @section('home', 'nav-item active')
 
     @section('content')
+	
     
         <!-- Start Hero Section -->
         <div class="hero">
@@ -23,6 +24,8 @@
 				</div>
         </div>
 		<!-- End Hero Section -->
+
+		@include('shared.category')
 
 		<!-- Start Product Section -->
 		<div class="product-section">
