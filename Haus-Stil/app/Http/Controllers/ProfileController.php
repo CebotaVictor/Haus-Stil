@@ -14,37 +14,42 @@ class ProfileController extends Controller
             $user = Auth::user();
             return view('profile.profile', compact('user'));
         } else {
-            return redirect()->route('login'); // Redirect if not authenticated
+            return redirect()->route('login'); 
         }
     }
 
-    public function updateProfile(Request $request,int $id){
-        
+    public function updateProfile(Request $request){
         $request->validate( [
             'name' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
-            'image' => ['required', 'image','mimes:jpeg,png,jpg,gif,svg'],
+            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg'],
         ]);
 
-        $user = User::find($id);
+        if (Auth::check()) {
+            $user = Auth::user();
+            if($user){
 
-        if($user == null){
-            return redirect()->route('home.home');
+            $imageModel = new Image();
+            $imageName = $imageModel->StoreImage($request, $user->id);
+            $user->update([
+                'name' => $request->name,
+                'username' => $request->username,
+                'email' => $request->email,
+                'imageName' => $imageName,
+            ]);     
+            return redirect()->route('profile', compact('user'));
+            }
+            else{
+                return redirect()->route('home.home');
+            }
         }
-        else{
-            return redirect()->route('home.home');
+         else {
+            return redirect()->route('login'); // Redirect if not authenticated
         }
 
-        // $imageModel = new Image();
-        // $imageName = $imageModel->StoreImage($request, $user->id);
-        // $user->update([
-        //     'name' => $request->name,
-        //     'username' => $request->username,
-        //     'email' => $request->email,
-        //     'imageName' => $imageName,
-        // ]);
-        // return redirect()->route('showProfile');
+       
+        
     }
 
 }   

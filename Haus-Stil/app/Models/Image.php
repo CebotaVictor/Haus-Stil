@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class Image extends Model
 {
-    public function StoreImage(Request $request, int $id){
+    public function StoreImage(Request $request, string $id){
         $request->validate([
             'image' => ['required' ,'image', 'mimes:jpeg,png,jpg,gif,svg'],
         ]);
@@ -19,8 +19,8 @@ class Image extends Model
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $imagePath = 'public/images/'.$user->name;
             $image->storeAs($imagePath, $imageName);
+            return $imageName;
         } 
-
-        return $imageName;
+        return null;
     }
 }

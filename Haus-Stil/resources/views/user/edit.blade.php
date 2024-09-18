@@ -13,7 +13,7 @@
         <!-- Update User Form -->
         <form action="{{ route('user.update', $user->id) }}" method="POST">
             @csrf
-            @method('PUT') <!-- Use PUT method for updates -->
+            @method('PUT') 
 
             <div class="form-group">
                 <label for="name">Name</label>

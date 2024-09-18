@@ -34,7 +34,7 @@ Route::controller(UserController::class)->group(function () {
 
 
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'showProfile'])->name('profile');
-Route::put('/profile/{id}', [App\Http\Controllers\ProfileController::class, 'updateProfile'])->name('updateprofile');
+Route::put('/profile', [App\Http\Controllers\ProfileController::class, 'updateProfile'])->name('updateprofile');
 
 //     use App\Http\Controllers\Auth\LoginController;
 //     use App\Http\Controllers\Auth\RegisterController;
