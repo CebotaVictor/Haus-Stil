@@ -12,6 +12,7 @@
                     <th>Username</th>
                     <th>Email</th>
                     <th>Password</th>
+                    <th>ImageName</th>
                     <th>Created At</th>
                     <th>Actions</th> <!-- New column for actions -->
                 </tr>
@@ -24,6 +25,7 @@
                     <td>{{ $user->username }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->password }}</td>
+                    <td>{{ $user->imageName }}</td>
                     <td>{{ $user->created_at }}</td>
                     <td>
                         <!-- Edit Button -->

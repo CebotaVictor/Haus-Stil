@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Image;
 use Illuminate\Http\Request;
 use App\Models\User;
-
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 class UserController extends Controller
 {
     /**
@@ -30,31 +31,36 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        try {
         $request->validate( [
             'name' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
-            'password' => ['required', 'string', 'max:8'],
-            // 'image' => ['required', 'image','mimes:jpeg,png,jpg,gif,svg'],
-            // 'image_name' => ['required', 'string','max:255'],
+            'password' => ['required', 'string', 'min:4'],
+            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg'],
         ]);
-
         
-        // $image = new Image();
-        // $imageName = $image->StoreImage($request, $request->id);
-
-        User::create([
+        $user = User::create([
             'name' => $request['name'],
             'username' => $request['username'],
             'email' => $request['email'],
             'password' => $request['password'],
             // 'imageName' => $imageName,
         ]);
+        $image = new Image();
+        $imageName = $image->StoreImage($request, $user->id);
 
-        return redirect()->route('user.read')
-        ->with('success', 'user created successfully.');
+        $user->update([
+            'imageName' => $imageName,
+        ]);
+
+        return redirect()->route('user.read')->with('success', 'user created successfully.');
+    } catch (ValidationException $e) {
+        // If validation fails, catch the error and inspect
+        dd($e->errors());  // Dump validation errors for inspection
     }
-
+    }
+    
     /**
      * Display the specified resource.
      */
@@ -73,14 +79,27 @@ class UserController extends Controller
             'username' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
             'password' => ['required', 'string', 'max:8'],
+            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg'],
         ]);
 
         $user = User::find($id);
 
-        $user->update($request->all());
-
-        return redirect()->route('user.read')
-            ->with('success', 'Post updated successfully.');
+        $imageModel = new Image();
+        if($imageModel){
+            $imageName = $imageModel->StoreImage($request, $id);
+            $user->update([
+                'name' => $request->name,
+                'username' => $request->username,
+                'email' => $request->email,
+                'password'=> $request->password,
+                'imageName' => $imageName,
+            ]);     
+            return redirect()->route('user.read')->with('success', 'Post updated successfully.');
+        }
+        else{
+            return redirect()->route('home.home')->with('error','Post updated unsuccessfully.');
+        }
+        
     }
 
     public function edit(string $id){
@@ -94,6 +113,8 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         $user = User::find($id);
+        $image = new Image();
+        $image->DeleteFile($user->id);
         $user->delete();
 
         return redirect()->route('user.read')

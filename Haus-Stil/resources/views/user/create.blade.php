@@ -3,7 +3,7 @@
 <div class="container mt-4">
         <h2 class="mb-4">User Form</h2>
 
-        <form action="{{ route('user.store') }}" method="POST">
+        <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <div class="form-group">
@@ -26,7 +26,14 @@
                 <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="form-group mb-2">
+                <label for="image">Select Image</label>
+                <input type="file" class="form-control" id="image" name="image">
+            </div>
+
+           
+
+            <button type="submit" class="btn btn-primary" >Submit</button>
         </form>
     </div>
 @endsection
