@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
@@ -28,7 +31,30 @@ Route::controller(UserController::class)->group(function () {
     Route::put('/user/{id}', 'update')->name('user.update');
     Route::get('/user/{id}/edit', 'edit')->name('user.edit');
     Route::delete('/user/{id}', 'destroy')->name('user.delete');
-    // Route::get('/details', 'details')->name('user.details');    
+}
+);
+
+
+Route::controller(CategoryController::class)->group(function () {
+    Route::get('/cat/create', 'create')->name('cat.create');    
+    Route::post('/cat/store', 'store')->name('cat.store');    
+    Route::get('/cat/read', 'index')->name('cat.read');    
+    Route::put('/cat/{id}', 'update')->name('cat.update');
+    Route::get('/cat/{id}/edit', 'edit')->name('cat.edit');
+    Route::delete('/cat/{id}', 'destroy')->name('cat.delete');
+
+}
+);
+
+
+Route::controller(ProductController::class)->group(function () {
+    Route::get('/prod/create', 'create')->name('prod.create');    
+    Route::post('/prod/store', 'store')->name('prod.store');    
+    Route::get('/prod/read', 'index')->name('prod.read');    
+    Route::put('/prod/{id}', 'update')->name('prod.update');
+    Route::get('/prod/{id}/edit', 'edit')->name('prod.edit');
+    Route::delete('/prod/{id}', 'destroy')->name('prod.delete');
+    
 }
 );
 

@@ -11,11 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('price');
+            $table->string('description')->nullable();
             $table->string('imageName')->nullable();
+            $table->unsignedBigInteger('category_id');
+            $table->string('categoryName');
             $table->timestamps();
+            
+            //reference to catTable
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 
@@ -27,3 +34,5 @@ return new class extends Migration
         Schema::dropIfExists('products');
     }
 };
+
+

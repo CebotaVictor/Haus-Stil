@@ -48,7 +48,7 @@ class UserController extends Controller
             // 'imageName' => $imageName,
         ]);
         $image = new Image();
-        $imageName = $image->StoreImage($request, $user->id);
+        $imageName = $image->StoreUserImage($request, $user->id);
 
         $user->update([
             'imageName' => $imageName,
@@ -86,7 +86,7 @@ class UserController extends Controller
 
         $imageModel = new Image();
         if($imageModel){
-            $imageName = $imageModel->StoreImage($request, $id);
+            $imageName = $imageModel->StoreUserImage($request, $id);
             $user->update([
                 'name' => $request->name,
                 'username' => $request->username,
@@ -114,7 +114,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $image = new Image();
-        $image->DeleteFile($user->id);
+        $image->DeleteUserFolder($user->id);
         $user->delete();
 
         return redirect()->route('user.read')

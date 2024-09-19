@@ -49,6 +49,15 @@
                 @enderror
             </div>
 
+            <div class="form-group">
+                <label for="image">Select Image</label>
+                <input type="file" class="form-control" id="image" name="image">
+                @error('image')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+
+
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>
