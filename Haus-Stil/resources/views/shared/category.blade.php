@@ -161,12 +161,12 @@ body{
         <!-- Category -->
         <div class="col-md-3 mb-4">
           <a href="#" class="card align-items-center text-decoration-none border-0 hover-lift-light py-4">
-            <span class="icon-circle icon-circle-lg bg-pastel-primary text-primary">
-              <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><title>ionicons-v5-c</title><polyline points="352 144 464 144 464 256" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></polyline><path d="M48,368,169.37,246.63a32,32,0,0,1,45.26,0l50.74,50.74a32,32,0,0,0,45.26,0L448,160" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></path></svg>
-            </span>
-            <span class="text-dark mt-3">
-              Statistics
-            </span>
+          <img src="https://embed.widencdn.net/img/cityfurniture/ntq1nmcnjq/3840px/MAR10145-1924-0507-MDS-HP-ECB-Sofas-XLG.webp?q=72" width="250px" class="img-fluid product-thumbnail mb-3">
+							<h3 class="product-title">Sofa</h3>
+
+							<span class="icon-cross"> 
+								<img src="images/cross.svg" class="img-fluid">
+							</span>
           </a>
         </div>
 
