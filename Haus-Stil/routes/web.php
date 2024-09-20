@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Mail\MyTestEmail;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
@@ -61,6 +62,16 @@ Route::controller(ProductController::class)->group(function () {
 
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'showProfile'])->name('profile');
 Route::put('/profile', [App\Http\Controllers\ProfileController::class, 'updateProfile'])->name('updateprofile');
+
+// Route::get('/forgot', [App\Http\Controllers\ForgotController::class, 'create'])->name('forgotPassword');
+
+
+Route::get('/testroute', function() {
+    $name = "Funny Coder";
+
+    // The email sending is done using the to method on the Mail facade
+    Mail::to('cebotavictor14@gmail.com')->send(new MyTestEmail($name));
+});
 
 //     use App\Http\Controllers\Auth\LoginController;
 //     use App\Http\Controllers\Auth\RegisterController;
