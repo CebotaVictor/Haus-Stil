@@ -23,6 +23,7 @@
                     <td>{{ $prod->price }}</td>
                     <td>{{ $prod->description }}</td>
                     <td>{{ $prod->categoryName }}</td>
+                    <td>{{ $prod->categoryName }}</td>
                     <td>{{ $prod->imageName }}</td>
                     <td>
                         <!-- Edit Button -->

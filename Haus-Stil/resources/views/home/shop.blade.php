@@ -22,123 +22,67 @@
 		
 
 		<div class="untree_co-section product-section before-footer-section">
-		    <div class="container">
-		      	<div class="row">
+		<div class="col-12 mb-4 ms-5">
+          <span class="badge bg-pastel-primary text-primary text-uppercase-bold-sm">
+            <h4>Topic categories</h4>
+          </span>
+        </div>
+			@foreach ($categories as $cat)
+			
+				<div class="container">
+					<div class="col-12 mb-4">
+						<span class="badge bg-pastel-primary text-primary text-uppercase-bold-sm">
+							<h3><strong>{{$cat->name}}</strong></h3>
+						</span>
+					</div>
+					<div class="row">
+						@foreach ($products as $prod )
+							@php
+								// Assuming $user->name includes the file extension
+								$imagePath = 'public/images/products/' . $prod->name.'/'.$prod->imageName; // Correct path for checking file existence
 
-		      		<!-- Start Column 1 -->
-					<div class="col-12 col-md-4 col-lg-3 mb-5">
-						<a class="product-item" href="#">
-							<img src="images/product-3.png" class="img-fluid product-thumbnail">
-							<h3 class="product-title">Nordic Chair</h3>
-							<strong class="product-price">$50.00</strong>
+								// Check if the file exists
+								$imageExists = Storage::exists($imagePath);
 
-							<span class="icon-cross">
-								<img src="images/cross.svg" class="img-fluid">
-							</span>
-						</a>
-					</div> 
-					<!-- End Column 1 -->
+								// Get the public URL for the image if it exists
+								$imageUrl = $imageExists ? Storage::url($imagePath) : null;
+							@endphp
+							@if($cat->id == $prod->category_id)
+								<!-- Start Column 1 -->
+								<div class="col-12 col-md-4 col-lg-3 mb-5">
+									<a class="product-item d-flex flex-column align-items-center" href="#">
+										<div class="product-image-wrapper">
+											<img src="{{ $imageUrl }}" width="200px" class="img-fluid product-thumbnail">
+										</div>
+										<h3 class="product-title">{{ $prod->name }}</h3>
+										<strong class="product-price">{{ $prod->price }}</strong>
+										<span class="icon-cross">
+											<img src="images/cross.svg" class="img-fluid">
+										</span>
+									</a>
+								</div>
+							@endif
+
+						@endforeach
 						
-					<!-- Start Column 2 -->
-					<div class="col-12 col-md-4 col-lg-3 mb-5">
-						<a class="product-item" href="#">
-							<img src="images/product-1.png" class="img-fluid product-thumbnail">
-							<h3 class="product-title">Nordic Chair</h3>
-							<strong class="product-price">$50.00</strong>
-
-							<span class="icon-cross">
+						<div class="col-12 col-md-4 col-lg-3 mb-5">
+                    		<a class="nav-link" href="{{ route('prod.create') }}">
+                        		<button class="btn btn-danger btn-sm">
+								<span class="icon-cross">
 								<img src="images/cross.svg" class="img-fluid">
-							</span>
-						</a>
-					</div> 
-					<!-- End Column 2 -->
-
-					<!-- Start Column 3 -->
-					<div class="col-12 col-md-4 col-lg-3 mb-5">
-						<a class="product-item" href="#">
-							<img src="images/product-2.png" class="img-fluid product-thumbnail">
-							<h3 class="product-title">Kruzo Aero Chair</h3>
-							<strong class="product-price">$78.00</strong>
-
-							<span class="icon-cross">
-								<img src="images/cross.svg" class="img-fluid">
-							</span>
-						</a>
-					</div>
-					<!-- End Column 3 -->
-
-					<!-- Start Column 4 -->
-					<div class="col-12 col-md-4 col-lg-3 mb-5">
-						<a class="product-item" href="#">
-							<img src="images/product-3.png" class="img-fluid product-thumbnail">
-							<h3 class="product-title">Ergonomic Chair</h3>
-							<strong class="product-price">$43.00</strong>
-
-							<span class="icon-cross">
-								<img src="images/cross.svg" class="img-fluid">
-							</span>
-						</a>
-					</div>
-					<!-- End Column 4 -->
-
-
-					<!-- Start Column 1 -->
-					<div class="col-12 col-md-4 col-lg-3 mb-5">
-						<a class="product-item" href="#">
-							<img src="images/product-3.png" class="img-fluid product-thumbnail">
-							<h3 class="product-title">Nordic Chair</h3>
-							<strong class="product-price">$50.00</strong>
-
-							<span class="icon-cross">
-								<img src="images/cross.svg" class="img-fluid">
-							</span>
-						</a>
-					</div> 
-					<!-- End Column 1 -->
-						
-					<!-- Start Column 2 -->
-					<div class="col-12 col-md-4 col-lg-3 mb-5">
-						<a class="product-item" href="#">
-							<img src="images/product-1.png" class="img-fluid product-thumbnail">
-							<h3 class="product-title">Nordic Chair</h3>
-							<strong class="product-price">$50.00</strong>
-
-							<span class="icon-cross">
-								<img src="images/cross.svg" class="img-fluid">
-							</span>
-						</a>
-					</div> 
-					<!-- End Column 2 -->
-
-					<!-- Start Column 3 -->
-					<div class="col-12 col-md-4 col-lg-3 mb-5">
-						<a class="product-item" href="#">
-							<img src="images/product-2.png" class="img-fluid product-thumbnail">
-							<h3 class="product-title">Kruzo Aero Chair</h3>
-							<strong class="product-price">$78.00</strong>
-
-							<span class="icon-cross">
-								<img src="images/cross.svg" class="img-fluid">
-							</span>
-						</a>
-					</div>
-					<!-- End Column 3 -->
-
-					<!-- Start Column 4 -->
-					<div class="col-12 col-md-4 col-lg-3 mb-5">
-						<a class="product-item" href="#">
-							<img src="images/product-3.png" class="img-fluid product-thumbnail">
-							<h3 class="product-title">Ergonomic Chair</h3>
-							<strong class="product-price">$43.00</strong>
-
-							<span class="icon-cross">
-								<img src="images/cross.svg" class="img-fluid">
-							</span>
-						</a>
-					</div>
-					<!-- End Column 4 -->
-
-		      	</div>
-		    </div>
+								</span>
+								</button>
+                    		</a>
+                		</div>
+				</div>
+					
+				</div>
+			@endforeach
+		</div>
+				<div class="d-flex justify-content-center">
+    				<a class="nav-link" href="{{ route('cat.create') }}">
+        				<button class="btn btn-danger btn-sm ">Create new category</button>
+				    </a>
+				</div>
 		</div>
     @endsection

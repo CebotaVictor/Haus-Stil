@@ -89,7 +89,7 @@ class ProductController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string', 'max:50'],
             'price' => ['required', 'numeric', 'min:0'],  // Change to numeric for better validation of price
-            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg'],
+            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg,webp'],
             'category_id' => 'required|exists:categories,id',
         ]);
 

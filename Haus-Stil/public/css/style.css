@@ -288,6 +288,19 @@ a {
     .why-choose-section .img-wrap img {
       border-radius: 20px; }
 
+
+      .product-image-wrapper {
+        width: 100%; /* Full width */
+        height: 300px; /* Fixed height */
+        overflow: hidden; /* Hide overflow */
+    }
+    
+    .product-image-wrapper img {
+        width: 100%; /* Make image take full width */
+        height: auto; /* Maintain aspect ratio */
+        object-fit: cover; /* Cover the area, cropping if necessary */
+    }
+
 .feature {
   margin-bottom: 30px; }
   .feature .icon {

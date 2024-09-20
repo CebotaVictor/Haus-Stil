@@ -31,7 +31,7 @@ class ProfileController extends Controller
             if($user){
 
             $imageModel = new Image();
-            $imageName = $imageModel->StoreImage($request, $user->id);
+            $imageName = $imageModel->StoreUserImage($request, $user->id);
             $user->update([
                 'name' => $request->name,
                 'username' => $request->username,

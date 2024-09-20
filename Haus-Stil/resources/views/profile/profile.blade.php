@@ -11,7 +11,7 @@
           @auth
             @php
                 // Assuming $user->name includes the file extension
-                $imagePath = 'public/images/' . $user->name.'/'.$user->imageName; // Correct path for checking file existence
+                $imagePath = 'public/images/users/' . $user->name.'/'.$user->imageName; // Correct path for checking file existence
 
                 // Check if the file exists
                 $imageExists = Storage::exists($imagePath);
