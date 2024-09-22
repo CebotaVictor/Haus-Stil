@@ -30,6 +30,11 @@ a {
   a.more {
     font-weight: 600; }
 
+    .no-rounded {
+      border-radius: 0 !important;
+  }
+  
+
 .custom-navbar {
   background: #3b5d50 !important;
   padding-top: 20px;

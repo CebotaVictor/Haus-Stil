@@ -20,14 +20,13 @@
             <li class="@yield('contact')" ><a class="nav-link" href="{{url('contact')}}">Contact us</a></li>
         </ul>
 
-        <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-            <li><a class="nav-link" href="{{url('cart')}}">cos</a></li>
-            
+        <ul class="custom-navbar-nav navbar-nav  mb-2 mb-md-0 ms-5">
+            <li class="@yield('card')"><a class="nav-link" href="{{url('cart')}}">Card</a></li>
         </ul>
 
 
         <!-- Right Side Of Navbar -->
-        <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+        <ul class="custom-navbar-nav navbar-nav mb-2 mb-md-0 ms-5">
     <!-- Authentication Links -->
     @guest
         @if (Route::has('login'))

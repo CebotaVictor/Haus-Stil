@@ -1,154 +1,292 @@
 @extends('layout.mainlayout')
+<link href="{{ asset('css/cart.css') }}" rel="stylesheet" >
+@section('card', 'nav-item active')
     @section('content')
-        <!-- Start Hero Section -->
-			<div class="hero">
-				<div class="container">
-					<div class="row justify-content-between">
-						<div class="col-lg-5">
-							<div class="intro-excerpt">
-								<h1>Cart</h1>
-							</div>
-						</div>
-						<div class="col-lg-7">
-							
-						</div>
-					</div>
-				</div>
-			</div>
-		<!-- End Hero Section -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css" integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc=" crossorigin="anonymous" />
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-		
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <div class="col-xl-8">
+            <div class="card border shadow-none">
+                <div class="card-body">
 
-		<div class="untree_co-section before-footer-section">
-            <div class="container">
-              <div class="row mb-5">
-                <form class="col-md-12" method="post">
-                  <div class="site-blocks-table">
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th class="product-thumbnail">Image</th>
-                          <th class="product-name">Product</th>
-                          <th class="product-price">Price</th>
-                          <th class="product-quantity">Quantity</th>
-                          <th class="product-total">Total</th>
-                          <th class="product-remove">Remove</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td class="product-thumbnail">
-                            <img src="images/product-1.png" alt="Image" class="img-fluid">
-                          </td>
-                          <td class="product-name">
-                            <h2 class="h5 text-black">Product 1</h2>
-                          </td>
-                          <td>$49.00</td>
-                          <td>
-                            <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
-                              <div class="input-group-prepend">
-                                <button class="btn btn-outline-black decrease" type="button">&minus;</button>
-                              </div>
-                              <input type="text" class="form-control text-center quantity-amount" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                              <div class="input-group-append">
-                                <button class="btn btn-outline-black increase" type="button">&plus;</button>
-                              </div>
+                    <div class="d-flex align-items-start border-bottom pb-3">
+                        <div class="me-4">
+                            <img src="https://www.bootdey.com/image/380x380/008B8B/000000" alt="" class="avatar-lg rounded">
+                        </div>
+                        <div class="flex-grow-1 align-self-center overflow-hidden">
+                            <div>
+                                <h5 class="text-truncate font-size-18"><a href="#" class="text-dark">Waterproof Mobile Phone </a></h5>
+                                <p class="text-muted mb-0">
+                                    <i class="bx bxs-star text-warning"></i>
+                                    <i class="bx bxs-star text-warning"></i>
+                                    <i class="bx bxs-star text-warning"></i>
+                                    <i class="bx bxs-star text-warning"></i>
+                                    <i class="bx bxs-star-half text-warning"></i>
+                                </p>
+                                <p class="mb-0 mt-1">Color : <span class="fw-medium">Gray</span></p>
                             </div>
-        
-                          </td>
-                          <td>$49.00</td>
-                          <td><a href="#" class="btn btn-black btn-sm">X</a></td>
-                        </tr>
-        
-                        <tr>
-                          <td class="product-thumbnail">
-                            <img src="images/product-2.png" alt="Image" class="img-fluid">
-                          </td>
-                          <td class="product-name">
-                            <h2 class="h5 text-black">Product 2</h2>
-                          </td>
-                          <td>$49.00</td>
-                          <td>
-                            <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
-                              <div class="input-group-prepend">
-                                <button class="btn btn-outline-black decrease" type="button">&minus;</button>
-                              </div>
-                              <input type="text" class="form-control text-center quantity-amount" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                              <div class="input-group-append">
-                                <button class="btn btn-outline-black increase" type="button">&plus;</button>
-                              </div>
+                        </div>
+                        <div class="flex-shrink-0 ms-2">
+                            <ul class="list-inline mb-0 font-size-16">
+                                <li class="list-inline-item">
+                                    <a href="#" class="text-muted px-1">
+                                        <i class="mdi mdi-trash-can-outline"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#" class="text-muted px-1">
+                                        <i class="mdi mdi-heart-outline"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="mt-3">
+                                    <p class="text-muted mb-2">Price</p>
+                                    <h5 class="mb-0 mt-2"><span class="text-muted me-2"><del class="font-size-16 fw-normal">$500</del></span>$450</h5>
+                                </div>
                             </div>
-        
-                          </td>
-                          <td>$49.00</td>
-                          <td><a href="#" class="btn btn-black btn-sm">X</a></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </form>
-              </div>
-        
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="row mb-5">
-                    <div class="col-md-6 mb-3 mb-md-0">
-                      <button class="btn btn-black btn-sm btn-block">Update Cart</button>
+                            <div class="col-md-5">
+                                <div class="mt-3">
+                                    <p class="text-muted mb-2">Quantity</p>
+                                    <div class="d-inline-flex">
+                                        <select class="form-select form-select-sm w-xl">
+                                            <option value="1">1</option>
+                                            <option value="2" selected="">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mt-3">
+                                    <p class="text-muted mb-2">Total</p>
+                                    <h5>$900</h5>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                      <button class="btn btn-outline-black btn-sm btn-block">Continue Shopping</button>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <label class="text-black h4" for="coupon">Coupon</label>
-                      <p>Enter your coupon code if you have one.</p>
-                    </div>
-                    <div class="col-md-8 mb-3 mb-md-0">
-                      <input type="text" class="form-control py-3" id="coupon" placeholder="Coupon Code">
-                    </div>
-                    <div class="col-md-4">
-                      <button class="btn btn-black">Apply Coupon</button>
-                    </div>
-                  </div>
+
                 </div>
-                <div class="col-md-6 pl-5">
-                  <div class="row justify-content-end">
-                    <div class="col-md-7">
-                      <div class="row">
-                        <div class="col-md-12 text-right border-bottom mb-5">
-                          <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
-                        </div>
-                      </div>
-                      <div class="row mb-3">
-                        <div class="col-md-6">
-                          <span class="text-black">Subtotal</span>
-                        </div>
-                        <div class="col-md-6 text-right">
-                          <strong class="text-black">$230.00</strong>
-                        </div>
-                      </div>
-                      <div class="row mb-5">
-                        <div class="col-md-6">
-                          <span class="text-black">Total</span>
-                        </div>
-                        <div class="col-md-6 text-right">
-                          <strong class="text-black">$230.00</strong>
-                        </div>
-                      </div>
-        
-                      <div class="row">
-                        <div class="col-md-12">
-                          <button class="btn btn-black btn-lg py-3 btn-block" onclick="window.location='{{url('checkout')}}'">Proceed To Checkout</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
-		
+            <!-- end card -->
 
+            <div class="card border shadow-none">
+                <div class="card-body">
+
+                    <div class="d-flex align-items-start border-bottom pb-3">
+                        <div class="me-4">
+                            <img src="https://www.bootdey.com/image/380x380/FF00FF/000000" alt="" class="avatar-lg rounded">
+                        </div>
+                        <div class="flex-grow-1 align-self-center overflow-hidden">
+                            <div>
+                                <h5 class="text-truncate font-size-18"><a href="#" class="text-dark">Smartphone Dual Camera </a></h5>
+                                <p class="text-muted mb-0">
+                                    <i class="bx bxs-star text-warning"></i>
+                                    <i class="bx bxs-star text-warning"></i>
+                                    <i class="bx bxs-star text-warning"></i>
+                                    <i class="bx bxs-star text-warning"></i>
+                                </p>
+                                <p class="mb-0 mt-1">Color : <span class="fw-medium">Green</span></p>
+                            </div>
+                        </div>
+                        <div class="flex-shrink-0 ms-2">
+                            <ul class="list-inline mb-0 font-size-16">
+                                <li class="list-inline-item">
+                                    <a href="#" class="text-muted px-1">
+                                        <i class="mdi mdi-trash-can-outline"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#" class="text-muted px-1">
+                                        <i class="mdi mdi-heart-outline"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="mt-3">
+                                    <p class="text-muted mb-2">Price</p>
+                                    <h5 class="mb-0 mt-2"><span class="text-muted me-2"><del class="font-size-16 fw-normal">$280</del></span>$240</h5>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="mt-3">
+                                    <p class="text-muted mb-2">Quantity</p>
+                                    <div class="d-inline-flex">
+                                        <select class="form-select form-select-sm w-xl">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3" selected="">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mt-3">
+                                    <p class="text-muted mb-2">Total</p>
+                                    <h5>$720</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- end card -->
+
+            <div class="card border shadow-none">
+                <div class="card-body">
+
+                    <div class="d-flex align-items-start border-bottom pb-3">
+                        <div class="me-4">
+                            <img src="https://www.bootdey.com/image/380x380/FF8C00/000000" alt="" class="avatar-lg rounded">
+                        </div>
+                        <div class="flex-grow-1 align-self-center overflow-hidden">
+                            <div>
+                                <h5 class="text-truncate font-size-18"><a href="#" class="text-dark">Black Colour Smartphone </a></h5>
+                                <p class="text-muted mb-0">
+                                    <i class="bx bxs-star text-warning"></i>
+                                    <i class="bx bxs-star text-warning"></i>
+                                    <i class="bx bxs-star text-warning"></i>
+                                </p>
+                                <p class="mb-0 mt-1">Color : <span class="fw-medium">Blue</span></p>
+                            </div>
+                        </div>
+                        <div class="flex-shrink-0 ms-2">
+                            <ul class="list-inline mb-0 font-size-16">
+                                <li class="list-inline-item">
+                                    <a href="#" class="text-muted px-1">
+                                        <i class="mdi mdi-trash-can-outline"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#" class="text-muted px-1">
+                                        <i class="mdi mdi-heart-outline"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="mt-3">
+                                    <p class="text-muted mb-2">Price</p>
+                                    <h5 class="mb-0 mt-2"><span class="text-muted me-2"><del class="font-size-16 fw-normal">$750</del></span>$950</h5>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="mt-3">
+                                    <p class="text-muted mb-2">Quantity</p>
+                                    <div class="d-inline-flex">
+                                        <select class="form-select form-select-sm w-xl">
+                                            <option value="1" selected="">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mt-3">
+                                    <p class="text-muted mb-2">Total</p>
+                                    <h5>$950</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- end card -->
+
+            <div class="row my-4">
+                <div class="col-sm-6">
+                    <a href="ecommerce-products.html" class="btn btn-link text-muted">
+                        <i class="mdi mdi-arrow-left me-1"></i> Continue Shopping </a>
+                </div> <!-- end col -->
+                <div class="col-sm-6">
+                    <div class="text-sm-end mt-2 mt-sm-0">
+                        <a href="ecommerce-checkout.html" class="btn btn-success">
+                            <i class="mdi mdi-cart-outline me-1"></i> Checkout </a>
+                    </div>
+                </div> <!-- end col -->
+            </div> <!-- end row-->
+        </div>
+
+        <div class="col-xl-4">
+            <div class="mt-5 mt-lg-0">
+                <div class="card border shadow-none">
+                    <div class="card-header bg-transparent border-bottom py-3 px-4">
+                        <h5 class="font-size-16 mb-0">Order Summary <span class="float-end">#MN0124</span></h5>
+                    </div>
+                    <div class="card-body p-4 pt-2">
+
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <tbody>
+                                    <tr>
+                                        <td>Sub Total :</td>
+                                        <td class="text-end">$ 780</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Discount : </td>
+                                        <td class="text-end">- $ 78</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Shipping Charge :</td>
+                                        <td class="text-end">$ 25</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Estimated Tax : </td>
+                                        <td class="text-end">$ 18.20</td>
+                                    </tr>
+                                    <tr class="bg-light">
+                                        <th>Total :</th>
+                                        <td class="text-end">
+                                            <span class="fw-bold">
+                                                $ 745.2
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- end table-responsive -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end row -->
+    
+</div>
     @endsection
     

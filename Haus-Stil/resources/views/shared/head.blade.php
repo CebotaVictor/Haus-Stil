@@ -10,4 +10,4 @@
         <link href="{{ asset('css/tiny-slider.css') }}" rel="stylesheet">
         <link href="{{ asset('css/style.css') }}" rel="stylesheet">
         <link rel="shortcut icon" href="favicon.png">
-        <title>Haus-Stil</title> 
+        <title>Haus-Stil</title>        

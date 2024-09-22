@@ -196,90 +196,75 @@
 		          </div>
 		        </div>
 		        <div class="col-md-6">
+				<div class="card-body border p-0 mt-5 bg-white">
+                        <p >
+							<a class="btn p-2 w-100 h-100 d-flex align-items-center justify-content-between no-rounded"
+								data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="true"
+								aria-controls="collapseExample">
+								<span>Credit Card</span>
+								<span>
+									<span class="fab fa-cc-amex"></span>
+									<span class="fab fa-cc-mastercard"></span>
+									<span class="fab fa-cc-discover"></span>
+								</span>
+							</a>
+                        </p>
+                        <div class="collapse show p-3 pt-0" id="collapseExample">
+                            <div class="row">
+                                <div class="col-lg-5 mb-lg-0 mb-3">
+                                    <p class="h4 mb-0">Summary</p>
+                                    <p class="mb-0"><span class="fw-bold">Product:</span><span class="c-green">: Name of
+                                            product</span>
+                                    </p>
+                                    <p class="mb-0">
+                                        <span class="fw-bold">Price:</span>
+                                        <span class="c-green">:$452.90</span>
+                                    </p>
+                                    <p class="mb-0">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque
+                                        nihil neque
+                                        quisquam aut
+                                        repellendus, dicta vero? Animi dicta cupiditate, facilis provident quibusdam ab
+                                        quis,
+                                        iste harum ipsum hic, nemo qui!</p>
+                                </div>
+                                <div class="col-lg-7">
+                                    <form action="" class="form">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form__div">
+                                                    <input type="text" class="form-control" placeholder=" ">
+                                                    <label for="" class="form__label">Card Number</label>
+                                                </div>
+                                            </div>
 
-		          <div class="row mb-5">
-		            <div class="col-md-12">
-		              <h2 class="h3 mb-3 text-black">Coupon Code</h2>
-		              <div class="p-3 p-lg-5 border bg-white">
+                                            <div class="col-6">
+                                                <div class="form__div">
+                                                    <input type="text" class="form-control" placeholder=" ">
+                                                    <label for="" class="form__label">MM / yy</label>
+                                                </div>
+                                            </div>
 
-		                <label for="c_code" class="text-black mb-3">Enter your coupon code if you have one</label>
-		                <div class="input-group w-75 couponcode-wrap">
-		                  <input type="text" class="form-control me-2" id="c_code" placeholder="Coupon Code" aria-label="Coupon Code" aria-describedby="button-addon2">
-		                  <div class="input-group-append">
-		                    <button class="btn btn-black btn-sm" type="button" id="button-addon2">Apply</button>
-		                  </div>
-		                </div>
-
-		              </div>
-		            </div>
-		          </div>
-
-		          <div class="row mb-5">
-		            <div class="col-md-12">
-		              <h2 class="h3 mb-3 text-black">Your Order</h2>
-		              <div class="p-3 p-lg-5 border bg-white">
-		                <table class="table site-block-order-table mb-5">
-		                  <thead>
-		                    <th>Product</th>
-		                    <th>Total</th>
-		                  </thead>
-		                  <tbody>
-		                    <tr>
-		                      <td>Top Up T-Shirt <strong class="mx-2">x</strong> 1</td>
-		                      <td>$250.00</td>
-		                    </tr>
-		                    <tr>
-		                      <td>Polo Shirt <strong class="mx-2">x</strong>   1</td>
-		                      <td>$100.00</td>
-		                    </tr>
-		                    <tr>
-		                      <td class="text-black font-weight-bold"><strong>Cart Subtotal</strong></td>
-		                      <td class="text-black">$350.00</td>
-		                    </tr>
-		                    <tr>
-		                      <td class="text-black font-weight-bold"><strong>Order Total</strong></td>
-		                      <td class="text-black font-weight-bold"><strong>$350.00</strong></td>
-		                    </tr>
-		                  </tbody>
-		                </table>
-
-		                <div class="border p-3 mb-3">
-		                  <h3 class="h6 mb-0"><a class="d-block" data-bs-toggle="collapse" href="#collapsebank" role="button" aria-expanded="false" aria-controls="collapsebank">Direct Bank Transfer</a></h3>
-
-		                  <div class="collapse" id="collapsebank">
-		                    <div class="py-2">
-		                      <p class="mb-0">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
-		                    </div>
-		                  </div>
-		                </div>
-
-		                <div class="border p-3 mb-3">
-		                  <h3 class="h6 mb-0"><a class="d-block" data-bs-toggle="collapse" href="#collapsecheque" role="button" aria-expanded="false" aria-controls="collapsecheque">Cheque Payment</a></h3>
-
-		                  <div class="collapse" id="collapsecheque">
-		                    <div class="py-2">
-		                      <p class="mb-0">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
-		                    </div>
-		                  </div>
-		                </div>
-
-		                <div class="border p-3 mb-5">
-		                  <h3 class="h6 mb-0"><a class="d-block" data-bs-toggle="collapse" href="#collapsepaypal" role="button" aria-expanded="false" aria-controls="collapsepaypal">Paypal</a></h3>
-
-		                  <div class="collapse" id="collapsepaypal">
-		                    <div class="py-2">
-		                      <p class="mb-0">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
-		                    </div>
-		                  </div>
-		                </div>
-
-		                <div class="form-group">
-		                  <button class="btn btn-black btn-lg py-3 btn-block" onclick="window.location='{{url('confirmed')}}'">Place Order</button>
-		                </div>
-
-		              </div>
-		            </div>
-		          </div>
+                                            <div class="col-6">
+                                                <div class="form__div">
+                                                    <input type="password" class="form-control" placeholder=" ">
+                                                    <label for="" class="form__label">cvv code</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form__div">
+                                                    <input type="text" class="form-control" placeholder=" ">
+                                                    <label for="" class="form__label">name on the card</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="btn w-100">Submit</div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 		        </div>
 		      </div>
