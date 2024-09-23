@@ -27,6 +27,12 @@ class ProductController extends Controller
         return view('products.read', compact('products'));
     }
 
+    public function details(string $id){
+        $product = Product::find($id);
+
+        return view('products.product', compact('product'));
+    }
+
     /**
      * Store a newly created resource in storage.
      */

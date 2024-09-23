@@ -50,7 +50,7 @@
 							@if($cat->id == $prod->category_id)
 								<!-- Start Column 1 -->
 								<div class="col-12 col-md-4 col-lg-3 mb-5">
-									<a class="product-item d-flex flex-column align-items-center" href="#">
+									<a class="product-item d-flex flex-column align-items-center" href="{{ route('prod.details', ['id' => $prod->id]) }}">
 										<div class="product-image-wrapper">
 											<img src="{{ $imageUrl }}" width="200px" class="img-fluid product-thumbnail">
 										</div>
@@ -62,7 +62,7 @@
 									</a>
 								</div>
 							@endif
-
+							
 						@endforeach
 						
 						<div class="col-12 col-md-4 col-lg-3 mb-5">

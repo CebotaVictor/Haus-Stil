@@ -55,6 +55,7 @@ Route::controller(ProductController::class)->group(function () {
     Route::put('/prod/{id}', 'update')->name('prod.update');
     Route::get('/prod/{id}/edit', 'edit')->name('prod.edit');
     Route::delete('/prod/{id}', 'destroy')->name('prod.delete');
+    Route::get('/prod/{id}/details', 'details')->name('prod.details');
     
 }
 );
