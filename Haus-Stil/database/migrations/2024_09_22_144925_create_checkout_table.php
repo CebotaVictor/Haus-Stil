@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('phone');
             $table->integer('card_number');
             $table->string('card_name');
-            $table->string('card_name');
+            $table->string('expire_date');
             $table->integer('ccv');
         });
     }

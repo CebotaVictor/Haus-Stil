@@ -10,12 +10,11 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 
 
-
+//home route
 Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'home')->name('home.home');    
     Route::get('/about', 'about')->name('home.about');  
     Route::get('/shop', 'shop')->name('home.shop') ;    
-    Route::get('/cart', 'cart')->name('home.cart') ; 
     Route::get('/checkout', 'checkout')->name('home.checkout');     
     Route::get('/blog', 'blog') ->name('home.blog'); 
     Route::get('/contact', 'contact')  ->name('home.contract');   
@@ -24,7 +23,7 @@ Route::controller(HomeController::class)->group(function () {
 }
 
 );
-
+//user route 
 Route::controller(UserController::class)->group(function () {
     Route::get('/user/create', 'create')->name('user.create');    
     Route::post('/user/store', 'store')->name('user.store');    
@@ -35,7 +34,7 @@ Route::controller(UserController::class)->group(function () {
 }
 );
 
-
+//category route
 Route::controller(CategoryController::class)->group(function () {
     Route::get('/cat/create', 'create')->name('cat.create');    
     Route::post('/cat/store', 'store')->name('cat.store');    
@@ -47,7 +46,7 @@ Route::controller(CategoryController::class)->group(function () {
 }
 );
 
-
+//product route 
 Route::controller(ProductController::class)->group(function () {
     Route::get('/prod/create', 'create')->name('prod.create');    
     Route::post('/prod/store', 'store')->name('prod.store');    
@@ -56,17 +55,21 @@ Route::controller(ProductController::class)->group(function () {
     Route::get('/prod/{id}/edit', 'edit')->name('prod.edit');
     Route::delete('/prod/{id}', 'destroy')->name('prod.delete');
     Route::get('/prod/{id}/details', 'details')->name('prod.details');
-    
 }
 );
 
-
+//profile route 
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'showProfile'])->name('profile');
 Route::put('/profile', [App\Http\Controllers\ProfileController::class, 'updateProfile'])->name('updateprofile');
 
+
+//cart route
+Route::post('/cart/{id}', [App\Http\Controllers\CartController::class, 'store'])->name('cart.cart');
+Route::get('/cart', [App\Http\Controllers\CartController::class, 'showCart'])->name('cart');
+
 // Route::get('/forgot', [App\Http\Controllers\ForgotController::class, 'create'])->name('forgotPassword');
 
-
+//mail route (for sending emails to a specific email address)
 Route::get('/testroute', function() {
     $name = "Funny Coder";
 
@@ -74,36 +77,39 @@ Route::get('/testroute', function() {
     Mail::to('cebotavictor14@gmail.com')->send(new MyTestEmail($name));
 });
 
-//     use App\Http\Controllers\Auth\LoginController;
-//     use App\Http\Controllers\Auth\RegisterController;
-//     use App\Http\Controllers\Auth\ForgotPasswordController;
-//     use App\Http\Controllers\Auth\ConfirmPasswordController;
-//     use App\Http\Controllers\Auth\VerificationController;
+
+//extended part for auth::routes - very stupid for laravel to hide this extended parts
+
+    use App\Http\Controllers\Auth\LoginController;
+    use App\Http\Controllers\Auth\RegisterController;
+    use App\Http\Controllers\Auth\ForgotPasswordController;
+    use App\Http\Controllers\Auth\ConfirmPasswordController;
+    use App\Http\Controllers\Auth\VerificationController;
 
 
-// Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
-// Route::post('login', [LoginController::class,'login']);
-// Route::post('logout',  [LoginController::class,'logout'])->name('logout');
+Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('login', [LoginController::class,'login']);
+Route::post('logout',  [LoginController::class,'logout'])->name('logout');
 
-// // Registration Routes...
-// Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-// Route::post('register', [RegisterController::class, 'register']);
+// Registration Routes...
+Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('register', [RegisterController::class, 'register']);
 
-// // Password Reset Routes...
-// Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
-// Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
-// Route::get('password/reset/{token}', [ForgotPasswordController::class, 'showResetForm'])->name('password.reset');
-// Route::post('password/reset', [ForgotPasswordController::class, 'reset'])->name('password.update');
+// Password Reset Routes...
+Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+Route::get('password/reset/{token}', [ForgotPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::post('password/reset', [ForgotPasswordController::class, 'reset'])->name('password.update');
 
-// // Confirm Password 
-// Route::get('password/confirm', [ConfirmPasswordController::class, 'showConfirmForm'])->name('password.confirm');
-// Route::post('password/confirm', [ConfirmPasswordController::class, 'confirm']);
+// Confirm Password 
+Route::get('password/confirm', [ConfirmPasswordController::class, 'showConfirmForm'])->name('password.confirm');
+Route::post('password/confirm', [ConfirmPasswordController::class, 'confirm']);
 
-// // Email Verification Routes...
-// Route::get('email/verify', [VerificationController::class, 'show'])->name('verification.notice');
-// Route::get('email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
-// Route::get('email/resend',  [VerificationController::class, 'resend'])->name('verification.resend');
+// Email Verification Routes...
+Route::get('email/verify', [VerificationController::class, 'show'])->name('verification.notice');
+Route::get('email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
+Route::get('email/resend',  [VerificationController::class, 'resend'])->name('verification.resend');
 
-Auth::routes();
-// Home
+
+// Home route
 Route::get('/home', [App\Http\Controllers\AuthController::class, 'index'])->name('home');
