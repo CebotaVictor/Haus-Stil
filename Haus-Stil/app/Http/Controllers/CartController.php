@@ -14,6 +14,8 @@ class CartController extends Controller
      * Display a listing of the resource.
      */
     public function showCart(){
+        $carts = null;
+        $products = null;
         if (auth()->check()) {
             // For authenticated users, fetch the cart from the database
             $carts = Cart::where('user_id', auth()->id())->get();
@@ -119,6 +121,24 @@ class CartController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $product = Product::find($id);
+        if($product){
+            if(auth()->check()){
+                $cart = Cart::where('user_id', auth()->id());
+            }
+            else{
+                $cart = session()->get('cart');
+
+                if (isset($cart[$id])) {
+                    unset($cart[$id]);
+
+                    session()->put('cart', $cart);
+                    return redirect()->route('cart')->with('success', 'Deleting product with success');
+                }
+                else return redirect()->route('cart')->with('error', 'Deleting product with no success');
+            }
+        }
+
+        else return redirect()->route('cart')->with('error', 'Deleting product with no success');
     }
 }

@@ -45,13 +45,18 @@
                             </div>
                         </div>
                         <div class="flex-shrink-0 ms-2">
+                            <form action="{{ route('cart.delete', $product->id) }}" method="POST">
                             <ul class="list-inline mb-0 font-size-16">
                                 <li class="list-inline-item">
-                                    <a href="#" class="text-muted px-1">
-                                        <i class="mdi mdi-trash-can-outline"></i>
-                                    </a>
+                                    @csrf
+                                    @method('DELETE')
+                                    <button  type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-sm me-1 mb-2" data-mdb-tooltip-init
+                                        title="Remove item">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
                                 </li>
                             </ul>
+                        </form>
                         </div>
                     </div>
                     <div>
@@ -163,6 +168,16 @@
     </div>
     <!-- end row -->
     
+</div>
+@else
+<div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="text-center">
+        <h2 class="text-muted">Your cart is empty</h2>
+        <!-- Button to redirect to store -->
+        <a href="{{ route('home.shop') }}" class="btn btn-primary mb-4">Go to Store</a>
+        
+        <!-- Centered empty cart message -->
+    </div>
 </div>
 @endif
 

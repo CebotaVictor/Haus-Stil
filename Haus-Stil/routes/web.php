@@ -66,6 +66,7 @@ Route::put('/profile', [App\Http\Controllers\ProfileController::class, 'updatePr
 //cart route
 Route::post('/cart/{id}', [App\Http\Controllers\CartController::class, 'store'])->name('cart.cart');
 Route::get('/cart', [App\Http\Controllers\CartController::class, 'showCart'])->name('cart');
+Route::delete('/cart/{id}', [App\Http\Controllers\CartController::class, 'destroy'])->name('cart.delete');
 
 // Route::get('/forgot', [App\Http\Controllers\ForgotController::class, 'create'])->name('forgotPassword');
 

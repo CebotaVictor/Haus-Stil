@@ -21,7 +21,7 @@
         </ul>
 
         <ul class="custom-navbar-nav navbar-nav  mb-2 mb-md-0 ms-5">
-            <li class="@yield('card')"><a class="nav-link" href="{{url('cart')}}">Card</a></li>
+            <li class="@yield('card')"><a class="nav-link" href="{{url('cart')}}">Cart</a></li>
         </ul>
 
 
