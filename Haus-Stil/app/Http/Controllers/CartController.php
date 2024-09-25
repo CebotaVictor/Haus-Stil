@@ -17,11 +17,11 @@ class CartController extends Controller
         $carts = null;
         $products = null;
         if (auth()->check()) {
-            // For authenticated users, fetch the cart from the database
             $carts = Cart::where('user_id', auth()->id())->get();
-            $product = Product::find($carts->id);
-        } else {
-            // For guest users, fetch the cart from the session
+            if(!$carts->isEmpty()){
+                $products = Product::all();
+            }
+        } else {            
             $carts = session()->get('cart', []);
             if(!empty($carts)){
                 $products = Product::all();
@@ -124,15 +124,18 @@ class CartController extends Controller
         $product = Product::find($id);
         if($product){
             if(auth()->check()){
-                $cart = Cart::where('user_id', auth()->id());
+                $carts = Cart::where('product_id', $id)
+                ->where('user_id', auth()->id())
+                ->first();  
+                $carts->delete();
+                return redirect()->route('cart')->with('success', 'Deleting product with success');
             }
             else{
-                $cart = session()->get('cart');
+                $carts = session()->get('cart');
 
-                if (isset($cart[$id])) {
-                    unset($cart[$id]);
-
-                    session()->put('cart', $cart);
+                if (isset($carts[$id])) {
+                    unset($carts[$id]);
+                    session()->put('cart', $carts);
                     return redirect()->route('cart')->with('success', 'Deleting product with success');
                 }
                 else return redirect()->route('cart')->with('error', 'Deleting product with no success');
