@@ -15,7 +15,7 @@
             @csrf
             @method('PUT') 
 
-            <div class="form-group">
+            <div class="form-group" style="width:20%;">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" class="form-control" value="{{ old('name', $categories->name) }}" required>
                 @error('name')
@@ -23,7 +23,7 @@
                 @enderror
             </div>
 
-            <div class="form-group">
+            <div class="form-group" style="width:20%;">
             <label for="image">Select Image</label>
             <input type="file" class="form-control" id="image" name="image">
                 <!-- @error('image')

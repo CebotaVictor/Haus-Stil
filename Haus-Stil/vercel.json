@@ -1,40 +1,38 @@
 {
     "version": 2,
-      "framework": null,
     "functions": {
-        "api/index.php": { "runtime": "vercel-php@0.7.1" }
+      "api/index.php": { "runtime": "vercel-php@0.7.1" }
     },
-    "routes": [{
-        "src": "/(.*)",
-        "dest": "/api/index.php"
-    }],
+    "routes": [
+      { "src": "/(css|js|images|fonts)/(.*)", "dest": "/public/$1/$2" },
+      { "src": "/(.*)", "dest": "/api/index.php" }
+    ],
     "env": {
-        "APP_ENV": "production",
-        "APP_DEBUG": "true",
-        "APP_URL": "https://haus-stil.com",
-
-        "APP_CONFIG_CACHE": "/tmp/config.php",
-        "APP_EVENTS_CACHE": "/tmp/events.php",
-        "APP_PACKAGES_CACHE": "/tmp/packages.php",
-        "APP_ROUTES_CACHE": "/tmp/routes.php",
-        "APP_SERVICES_CACHE": "/tmp/services.php",
-        "VIEW_COMPILED_PATH": "/tmp",
-
-        "CACHE_DRIVER": "array",
-        "LOG_CHANNEL": "stderr",
-        "SESSION_DRIVER": "cookie",
-        "LD_LIBRARY_PATH": "/usr/lib64:/usr/lib",
-        "LD_PRELOAD": "/usr/lib64/libssl.so.10:/usr/lib64/libcrypto.so.10",
-        "DB_CONNECTION":"mysql",
-        "DB_HOST":"haus-stil-qlk7r3ibb-cebotavictors-projects.vercel.app",
-        "DB_PORT":"3306",
-        "DB_DATABASE":"haus-stil",
-        "DB_USERNAME":"root",
-        "DB_PASSWORD":"root",
-        "SESSION_LIFETIME":"5",
-        "SESSION_ENCRYPT":"true",
-        "SESSION_PATH":"/",
-        "SESSION_DOMAIN":"null"
+      "APP_ENV": "production",
+      "APP_DEBUG": "true",
+      "APP_URL": "https://haus-stil.com",
+      "APP_CONFIG_CACHE": "/tmp/config.php",
+      "APP_EVENTS_CACHE": "/tmp/events.php",
+      "APP_PACKAGES_CACHE": "/tmp/packages.php",
+      "APP_ROUTES_CACHE": "/tmp/routes.php",
+      "APP_SERVICES_CACHE": "/tmp/services.php",
+      "VIEW_COMPILED_PATH": "/tmp",
+      "CACHE_DRIVER": "array",
+      "LOG_CHANNEL": "stderr",
+      "SESSION_DRIVER": "cookie",
+      "LD_LIBRARY_PATH": "/usr/lib64:/usr/lib",
+      "LD_PRELOAD": "/usr/lib64/libssl.so.10:/usr/lib64/libcrypto.so.10",
+      "DB_CONNECTION": "pgsql",
+      "DATABASE_URL": "postgresql://postgres.fssdotnbbuxvkbbkomae:Post@@db123$$@aws-0-eu-central-1.pooler.supabase.com:6543/postgres",
+      "DB_HOST": "aws-0-eu-central-1.pooler.supabase.com",
+      "DB_PORT": "6543",
+      "DB_DATABASE": "postgres",
+      "DB_USERNAME": "postgres.fssdotnbbuxvkbbkomae",
+      "DB_PASSWORD": "Post@@db123$$",
+      "SESSION_LIFETIME": "5",
+      "SESSION_ENCRYPT": "true",
+      "SESSION_PATH": "/",
+      "SESSION_DOMAIN": "null"
     }
-    
-}
+  }
+  

@@ -6,12 +6,12 @@
         <form action="{{ route('cat.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
-            <div class="form-group">
+            <div class="form-group " style="width:20%;">
                 <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter category name" required>
             </div>
 
-            <div class="form-group mb-2">
+            <div class="form-group mb-2" style="width:20%;">
                 <label for="image">Select Image</label>
                 <input type="file" class="form-control" id="image" name="image">
             </div>

@@ -13,8 +13,9 @@
                     <th>Email</th>
                     <th>Password</th>
                     <th>ImageName</th>
+                    <th>UserRole</th>
                     <th>Created At</th>
-                    <th>Actions</th> <!-- New column for actions -->
+                    <th>Actions</th> 
                 </tr>
             </thead>
             <tbody>
@@ -26,6 +27,7 @@
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->password }}</td>
                     <td>{{ $user->imageName }}</td>
+                    <td>{{ $user->user_type->name}}</td>
                     <td>{{ $user->created_at }}</td>
                     <td>
                         <!-- Edit Button -->

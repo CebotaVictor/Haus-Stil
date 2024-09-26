@@ -1,11 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Enums\UType;
 use App\Models\Image;
-use Illuminate\Http\Request;
 use App\Models\User;
+use Hash;
+use Illuminate\Http\Request;
+
+
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 class UserController extends Controller
 {
@@ -15,7 +19,8 @@ class UserController extends Controller
 
      public function create()
     {
-        return view('user.create');
+        $userTypes = UType::cases();
+        return view('user.create', compact('userTypes'));
     }
 
 
@@ -38,13 +43,15 @@ class UserController extends Controller
             'email' => ['required', 'string', 'email', 'max:255'],
             'password' => ['required', 'string', 'min:4'],
             'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg'],
+            'user_type' => ['required', Rule::in(array_column(UType::cases(), 'value'))],
         ]);
         
         $user = User::create([
             'name' => $request['name'],
             'username' => $request['username'],
             'email' => $request['email'],
-            'password' => $request['password'],
+            'password' => Hash::make($request['password']),
+            'user_type' => $request['user_type'],
             // 'imageName' => $imageName,
         ]);
         $image = new Image();
@@ -80,6 +87,7 @@ class UserController extends Controller
             'email' => ['required', 'string', 'email', 'max:255'],
             'password' => ['required', 'string', 'max:8'],
             'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg'],
+            'user_type' => ['required', Rule::in(array_column(UType::cases(), 'value'))],
         ]);
 
         $user = User::find($id);
@@ -91,8 +99,9 @@ class UserController extends Controller
                 'name' => $request->name,
                 'username' => $request->username,
                 'email' => $request->email,
-                'password'=> $request->password,
+                'password' => Hash::make($request['password']),
                 'imageName' => $imageName,
+                'user_type' => $request['user_type'],
             ]);     
             return redirect()->route('user.read')->with('success', 'Post updated successfully.');
         }
@@ -104,7 +113,8 @@ class UserController extends Controller
 
     public function edit(string $id){
         $user = User::findOrFail($id);
-        return view('user.edit', compact('user'));
+        $userTypes = UType::cases();
+        return view('user.edit', compact('user', 'userTypes'));
     }
 
     /**
