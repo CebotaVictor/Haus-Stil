@@ -34,16 +34,7 @@
         "SESSION_LIFETIME":"5",
         "SESSION_ENCRYPT":"true",
         "SESSION_PATH":"/",
-        "SESSION_DOMAIN":"null",
-
-        "MAIL_MAILER":"smtp",
-        "MAIL_HOST":"smtp.gmail.com",
-        "MAIL_PORT":"587",
-        "MAIL_USERNAME":"cebotavictor14@gmail.com",
-        "MAIL_PASSWORD":"lhnz myns nwpt xfyy",
-        "MAIL_ENCRYPTION":"tls",
-        "MAIL_FROM_ADDRESS":"cebotavictor14@gmail.com",
-        "MAIL_FROM_NAME":"Haus-Stil"
+        "SESSION_DOMAIN":"null"
     }
     
 }
