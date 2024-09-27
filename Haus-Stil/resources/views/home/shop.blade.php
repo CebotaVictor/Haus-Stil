@@ -64,8 +64,20 @@
 							@endif
 							
 						@endforeach
-						
-						<div class="col-12 col-md-4 col-lg-3 mb-5">
+						@if($user)
+							@if($user->user_type->value == 2||$user->user_type->value == 3)
+							<div class="col-12 col-md-4 col-lg-3 mb-5" name="prodCreate">
+								<a class="nav-link" href="{{ route('prod.create') }}">
+									<button class="btn btn-danger btn-sm">
+									<span class="icon-cross">
+									<img src="images/cross.svg" class="img-fluid">
+									</span>
+									</button>
+								</a>
+							</div>
+							@endif
+						@else
+						<div class="col-12 col-md-4 col-lg-3 mb-5" name="prodCreate" hidden>
                     		<a class="nav-link" href="{{ route('prod.create') }}">
                         		<button class="btn btn-danger btn-sm">
 								<span class="icon-cross">
@@ -74,15 +86,27 @@
 								</button>
                     		</a>
                 		</div>
+						@endif
 				</div>
 					
 				</div>
-			@endforeach
-		</div>
-				<div class="d-flex justify-content-center">
-    				<a class="nav-link" href="{{ route('cat.create') }}">
-        				<button class="btn btn-danger btn-sm ">Create new category</button>
-				    </a>
-				</div>
+				@endforeach
+			</div>
+			
+			@if($user)
+				@if($user->user_type->value == 2||$user->user_type->value == 3)
+					<div class="d-flex justify-content-center" name="catCreate">
+						<a class="nav-link" href="{{ route('cat.create') }}">
+							<button class="btn btn-danger btn-sm ">Create new category</button>
+						</a>
+					</div>
+					@endif
+				@else
+					<div class="d-flex justify-content-center" name="catCreate" hidden>
+						<a class="nav-link" href="{{ route('cat.create') }}" hidden>
+							<button class="btn btn-danger btn-sm ">Create new category</button>
+						</a>
+					</div>
+			@endif
 		</div>
     @endsection

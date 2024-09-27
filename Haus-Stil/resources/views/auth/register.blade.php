@@ -77,6 +77,24 @@
                             </div>
                         </div>
 
+                        <div class="row mb-3">
+                            <label for="user_type" class="col-md-4 col-form-label text-md-end">{{ __('Choose youre role') }}</label>
+
+                            <div class="col-md-6">
+                                <select name="user_type" id="user_type" class="form-control">
+                                    @foreach($userTypes as $type)
+                                        @if($type->value == 3) 
+                                        @break
+                                        @endif
+                                        <option value="{{ $type->value }}">{{ $type->name }}</option>
+                                    @endforeach
+                                    @error('user_type')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

@@ -7,18 +7,20 @@
 <div class="container mt-5 mb-5">
     <div class="row">
         <div class="col-xl-8">
-            
+            @php
+            $prod_array = [];
+            @endphp
+
+            @endphp
             @foreach ($carts as $cart)
             <div class="card border shadow-none">
                 <div class="card-body">
                     @php
                     if ($cart instanceof \App\Models\Cart){
                         $product = \App\Models\Product::find($cart->product_id);
-                        
+                        $prod_array[] = $product;
                     } else {
-                        // This is a session cart item
                         $product = \App\Models\Product::find($cart['product_id']);
-
                     }
                     @endphp
                         
@@ -71,16 +73,11 @@
                                 <div class="mt-3">
                                     <p class="text-muted mb-2">Quantity</p>
                                     <div class="d-inline-flex">
-                                        <select class="form-select form-select-sm w-xl quantity-select" data-price="{{$product->price}}" data-id="{{$product->id}}">
-                                            <option value="1" selected="">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                        </select>
+                                    <select class="form-select form-select-sm w-xl quantity-select" name="select" data-price="{{ $product->price }}" data-id="{{ $product->id }}">
+                                        @for($i = 1; $i <= 8; $i++)
+                                            <option value="{{ $i }}" {{ $cart->total_products == $i ? 'selected' : '' }}>{{ $i }}</option>
+                                        @endfor
+                                    </select>
                                     </div>
                                 </div>
                             </div>
@@ -130,13 +127,17 @@
         <a href="{{route('home.shop')}}" class="btn btn-link text-muted">
             <i class="mdi mdi-arrow-left me-1"></i> Continue Shopping </a>
         </div> <!-- end col -->
-        <div class="col-sm-6">
-            <div class="text-sm-end mt-2 mt-sm-0">
-                <a href="{{route('home.checkout')}}" class="btn btn-success">
-                    <i class="mdi mdi-cart-outline me-1"></i> Checkout </a>
+        <form action="{{ route('checkout') }}" method="POST">
+        @csrf
+            <div class="col-sm-6">
+                <div class="text-sm-end mt-2 mt-sm-0">
+                    <input type="hidden" name="products" value="{{ json_encode($prod_array) }}">
+                    <button type="submit" class="btn btn-success">
+                        <i class="mdi mdi-cart-outline me-1"></i> Checkout
+                    </button>
                 </div>
             </div> <!-- end col -->
-        </div> <!-- end row-->
+</div> <!-- end row-->
     </div>
     
     <div class="col-xl-4">

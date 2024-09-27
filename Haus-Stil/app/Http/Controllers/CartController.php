@@ -51,7 +51,7 @@ class CartController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store($id)
+    public function store(Request $request,$id)
     {
         $product = Product::find($id);
 
@@ -65,6 +65,10 @@ class CartController extends Controller
                     $cart->total_products++;           
                 }
                 else{
+                    $request->validate( [
+                        ''=> '',
+                    ]);
+
                     $cart = new Cart();
                     $cart->user_id = auth()->id();
                     $cart->product_id = $id;

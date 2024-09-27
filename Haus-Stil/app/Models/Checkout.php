@@ -9,15 +9,18 @@ class Checkout extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'country',
         'firstname',
         'lastname',
+        'country',
         'address',
         'postal_number',
+        'city',
         'phone',
+        'email',
         'card_number',
         'expire_date',
         'ccv',
-        'card_name'
+        'card_name',
+        'total_price',
     ];
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\UType;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -15,17 +16,21 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'home')->name('home.home');    
     Route::get('/about', 'about')->name('home.about');  
     Route::get('/shop', 'shop')->name('home.shop') ;    
-    Route::get('/checkout', 'checkout')->name('home.checkout');     
+    Route::get('/checkout', 'showCheckout')->middleware(['auth']) 
+    ->name('home.checkout');
+    Route::post('/checkout', 'checkout')->middleware(['auth'])->name('checkout');
+    Route::put('/checkout', 'storeCheckout')->name('checkout.store');
     Route::get('/blog', 'blog') ->name('home.blog'); 
     Route::get('/contact', 'contact')  ->name('home.contract');   
     Route::get('/services', 'services')->name('home.services');  
     Route::get('/confirmed', 'confirmed')->name('home.confirmed');  
+    
 }
 
 );
 //user route 
 Route::controller(UserController::class)->group(function () {
-    Route::get('/user/create', 'create')->name('user.create');    
+    Route::get('/user/create', 'create')->middleware('admin.mod:' . [UType::Admin->value, UType::Vendor->value])->name('user.create');    
     Route::post('/user/store', 'store')->name('user.store');    
     Route::get('/user/read', 'index')->name('user.read');    
     Route::put('/user/{id}', 'update')->name('user.update');

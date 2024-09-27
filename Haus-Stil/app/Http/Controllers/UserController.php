@@ -17,6 +17,13 @@ class UserController extends Controller
      * Display a listing of the resource.
      */
 
+
+     public function __construct()
+     {
+        $this->middleware('admin.mod:' . UType::Admin->value);
+     }
+
+     
      public function create()
     {
         $userTypes = UType::cases();
@@ -43,7 +50,7 @@ class UserController extends Controller
             'email' => ['required', 'string', 'email', 'max:255'],
             'password' => ['required', 'string', 'min:4'],
             'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg'],
-            'user_type' => ['required', Rule::in(array_column(UType::cases(), 'value'))],
+            'user_type' => ['nullable', Rule::in(array_column(UType::cases(), 'value'))],
         ]);
         
         $user = User::create([

@@ -11,7 +11,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        $middleware->alias([
+            'admin.mod' => \App\Http\Middleware\AdminModMiddleware::class,
+            'check.product.in.cart' => \App\Http\Middleware\CheckProductInCart::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

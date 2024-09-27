@@ -11,18 +11,23 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('checkout', function (Blueprint $table) {
+        Schema::create('checkouts', function (Blueprint $table) {
             $table->id();
             $table->string('firstname');
             $table->string('lastname');
             $table->string('country');
             $table->string('address');
             $table->integer('postal_number');
+            $table->string('city');
             $table->string('phone');
-            $table->integer('card_number');
+            $table->string('email');
+            $table->string('card_number');
             $table->string('card_name');
             $table->string('expire_date');
             $table->integer('ccv');
+            $table->string('total_price');
+            $table->rememberToken();
+            $table->timestamps();
         });
     }
 
@@ -34,3 +39,4 @@ return new class extends Migration
         Schema::dropIfExists('checkout');
     }
 };
+
