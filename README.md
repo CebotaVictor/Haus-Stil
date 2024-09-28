@@ -1,4 +1,4 @@
 # Haus-Stil
 
-Tema - Aplicație web pentru vânzarea mobilierului de uz casnic
+Tema - Aplicație web pentru comercializarea mobilierului de uz casnic
 
