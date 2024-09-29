@@ -17,7 +17,7 @@ class Image extends Model
         if ($request->hasFile('image')) {
             $user = User::find($id);
             if($user){
-                $folder = 'public/images/users/'.$user->name;
+                $folder = 'public/images/users/'.$user->username;
                 if(Storage::exists($folder)){
                     if(!empty($folder)){
                         $image = $request->file('image');
@@ -30,7 +30,7 @@ class Image extends Model
                 else if(!Storage::exists($folder)){
                     $image = $request->file('image');
                     $imageName = time() . '.' . $image->getClientOriginalExtension();
-                    $imagePath = 'public/images/users/'.$user->name;
+                    $imagePath = 'public/images/users/'.$user->username;
                     $image->storeAs($imagePath, $imageName);
                     return $imageName;
                 }

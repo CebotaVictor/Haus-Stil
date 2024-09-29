@@ -26,7 +26,7 @@
       <!-- Categories -->
       <div class="row mt-6">
         <div class="col-12 mb-4">
-          <span class="badge bg-pastel-primary text-primary text-uppercase-bold-sm">
+          <span class="badge bg-pastel-primary text-primary text-uppercase-bold-sm" id ="category">
             Topic categories
           </span>
         </div>
@@ -43,8 +43,8 @@
             // Get the public URL for the image if it exists
             $imageUrl = $imageExists ? Storage::url($imagePath) : null;
           @endphp
-          <div class="col-md-3 mb-4">
-            <a href="#" class="card align-items-center text-decoration-none border-0 hover-lift-light py-4">
+          <div class="col-md-3 mb-4" id="category">
+            <a href="{{route('home.shop')}}" class="card align-items-center text-decoration-none border-0 hover-lift-light py-4">
                 <div class="product-image-wrapper">
                     @if($imageUrl)
                         <img src="{{ $imageUrl }}" width="200px" class="img-fluid product-thumbnail">

@@ -16,9 +16,17 @@
             @method('PUT') 
 
             <div class="form-group" style="width:20%;">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" class="form-control" value="{{ old('name', $user->name) }}" required>
-                @error('name')
+                <label for="firstname">Firstname</label>
+                <input type="text" id="firstname" name="firstname" class="form-control" value="{{ old('firstname', $user->firstname) }}" required>
+                @error('firstname')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+            
+            <div class="form-group" style="width:20%;">
+                <label for="lastname">Lastname</label>
+                <input type="text" id="lastname" name="lastname" class="form-control" value="{{ old('lastname', $user->lastname) }}" required>
+                @error('lastname')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>

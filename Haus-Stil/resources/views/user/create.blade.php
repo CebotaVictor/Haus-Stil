@@ -7,8 +7,13 @@
             @csrf
 
             <div class="form-group" style="width:20%;">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+                <label for="firstname">Firstname</label>
+                <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Enter your firstname" required>
+            </div>
+
+            <div class="form-group" style="width:20%;">
+                <label for="lastname">Lastname</label>
+                <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Enter your lastname" required>
             </div>
 
             <div class="form-group" style="width:20%;">

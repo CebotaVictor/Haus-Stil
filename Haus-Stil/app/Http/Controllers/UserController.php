@@ -45,21 +45,22 @@ class UserController extends Controller
     {
         try {
         $request->validate( [
-            'name' => ['required', 'string', 'max:255'],
-            'username' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255'],
-            'password' => ['required', 'string', 'min:4'],
-            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg'],
+            'firstname' => ['required', 'string', 'max:255'],
+            'lastname' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'max:8', 'confirmed'],
             'user_type' => ['nullable', Rule::in(array_column(UType::cases(), 'value'))],
+            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg'],
         ]);
         
         $user = User::create([
-            'name' => $request['name'],
+            'firstname' => $request['firstname'],
+            'lastname' => $request['lastname'],
             'username' => $request['username'],
-            'email' => $request['email'],
+            'email' =>    $request['email'],
             'password' => Hash::make($request['password']),
             'user_type' => $request['user_type'],
-            // 'imageName' => $imageName,
         ]);
         $image = new Image();
         $imageName = $image->StoreUserImage($request, $user->id);
@@ -89,12 +90,13 @@ class UserController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate( [
-            'name' => ['required', 'string', 'max:255'],
-            'username' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255'],
-            'password' => ['required', 'string', 'max:8'],
+           'firstname' => ['required', 'string', 'max:255'],
+            'lastname' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'max:8', 'confirmed'],
+            'user_type' => ['nullable', Rule::in(array_column(UType::cases(), 'value'))],
             'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg'],
-            'user_type' => ['required', Rule::in(array_column(UType::cases(), 'value'))],
         ]);
 
         $user = User::find($id);
@@ -103,12 +105,13 @@ class UserController extends Controller
         if($imageModel){
             $imageName = $imageModel->StoreUserImage($request, $id);
             $user->update([
-                'name' => $request->name,
+                'firstname' => $request['firstname'],
+                'lastname' => $request['lastname'],
                 'username' => $request->username,
                 'email' => $request->email,
                 'password' => Hash::make($request['password']),
-                'imageName' => $imageName,
                 'user_type' => $request['user_type'],
+                'imageName' => $imageName,
             ]);     
             return redirect()->route('user.read')->with('success', 'Post updated successfully.');
         }

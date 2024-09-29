@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\UType;
 use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Checkout;
+use App\Models\Feedback;
 use Illuminate\Validation\ValidationException;
 use App\Models\Product;
 use App\Models\User;
 use App\Mail\CheckoutMail;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Validation\Rule;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -95,8 +98,42 @@ class HomeController extends Controller
     
 
 
-    public function contact(){
-        return view("home.contact");
+    public function showFeedback(){
+        return view("home.feedback");
+    }
+
+    public function sendFeedback(Request $request){
+        if(auth()->user()){
+            try {
+                $request->validate( [
+                    'firstname' => ['required', 'string', 'max:255'],
+                    'lastname' => ['required', 'string', 'max:255'],
+                    'email' => ['required', 'string', 'email', 'max:255'],
+                    'message' => ['required', 'string', 'max:350'],
+                    'user_type' => ['nullable', Rule::in(array_column(UType::cases(), 'value'))],
+                ]);
+                
+                $user = auth()->user();
+
+
+                $feedback = Feedback::create([
+                    'firstname' => $request['firstname'],
+                    'lastname' => $request['lastname'],
+                    'email' => $request['email'],
+                    'message' => $request['message'],
+                    'user_id' => $user->id,
+                    'user_type' => $request['user_type'],
+                ]);
+                
+                return redirect()->route('user.read')->with('success', 'user created successfully.');
+            } catch (ValidationException $e) {
+                // If validation fails, catch the error and inspect
+                dd($e->errors());  // Dump validation errors for inspection
+            }
+        }
+        else{
+            return redirect()->route('home.home')->with('error','');
+        }
     }
 
     public function services(){

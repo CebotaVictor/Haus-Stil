@@ -69,6 +69,7 @@
                                     <h5 class="mb-0 mt-2"><span class="text-muted me-2"></span>{{$product->price}}</h5>
                                 </div>
                             </div>
+                            @if ($cart instanceof \App\Models\Cart){
                             <div class="col-md-5">
                                 <div class="mt-3">
                                     <p class="text-muted mb-2">Quantity</p>
@@ -81,6 +82,20 @@
                                     </div>
                                 </div>
                             </div>
+                            @else 
+                            <div class="col-md-5">
+                                <div class="mt-3">
+                                    <p class="text-muted mb-2">Quantity</p>
+                                    <div class="d-inline-flex">
+                                    <select class="form-select form-select-sm w-xl quantity-select" name="select" data-price="{{ $product->price }}" data-id="{{ $product->id }}">
+                                        @for($i = 1; $i <= 8; $i++)
+                                            <option value="{{ $i }}" {{ $cart['total_products'] == $i ? 'selected' : '' }}>{{ $i }}</option>
+                                        @endfor
+                                    </select>
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
                             
                         </div>
                     </div>

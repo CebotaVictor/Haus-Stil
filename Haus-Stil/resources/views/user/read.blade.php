@@ -8,7 +8,8 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
                     <th>Username</th>
                     <th>Email</th>
                     <th>Password</th>
@@ -22,7 +23,8 @@
                 @foreach ($users as $user)
                 <tr>
                     <td>{{ $user->id }}</td>
-                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->firstname }}</td>
+                    <td>{{ $user->lastname }}</td>
                     <td>{{ $user->username }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->password }}</td>

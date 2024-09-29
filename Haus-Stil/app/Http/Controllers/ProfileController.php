@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\UType;
 use App\Models\User;
 use App\Models\Image;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
@@ -19,8 +22,10 @@ class ProfileController extends Controller
     }
 
     public function updateProfile(Request $request){
+        try {
         $request->validate( [
-            'name' => ['required', 'string', 'max:255'],
+            'firstname' => ['required', 'string', 'max:255'],
+            'lastname' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
             'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg'],
@@ -33,7 +38,8 @@ class ProfileController extends Controller
             $imageModel = new Image();
             $imageName = $imageModel->StoreUserImage($request, $user->id);
             $user->update([
-                'name' => $request->name,
+                'firstname' => $request->firstname,
+                'lastname' => $request->lastname,
                 'username' => $request->username,
                 'email' => $request->email,
                 'imageName' => $imageName,
@@ -47,6 +53,10 @@ class ProfileController extends Controller
          else {
             return redirect()->route('login'); // Redirect if not authenticated
         }
+    } catch (ValidationException $e) {
+        // If validation fails, catch the error and inspect
+        dd($e->errors());  // Dump validation errors for inspection
+    }
 
        
         

@@ -21,7 +21,8 @@ Route::controller(HomeController::class)->group(function () {
     Route::post('/checkout', 'checkout')->middleware(['auth'])->name('checkout');
     Route::put('/checkout', 'storeCheckout')->name('checkout.store');
     Route::get('/blog', 'blog') ->name('home.blog'); 
-    Route::get('/contact', 'contact')  ->name('home.contract');   
+    Route::get('/contact', 'showFeedback')->middleware(['auth'])->name('home.feedback');    
+    Route::post('/contact', 'sendFeedback')->name('feedback');   
     Route::get('/services', 'services')->name('home.services');  
     Route::get('/confirmed', 'confirmed')->name('home.confirmed');  
     
@@ -30,7 +31,7 @@ Route::controller(HomeController::class)->group(function () {
 );
 //user route 
 Route::controller(UserController::class)->group(function () {
-    Route::get('/user/create', 'create')->middleware('admin.mod:' . [UType::Admin->value, UType::Vendor->value])->name('user.create');    
+    Route::get('/user/create', 'create')->name('user.create');    
     Route::post('/user/store', 'store')->name('user.store');    
     Route::get('/user/read', 'index')->name('user.read');    
     Route::put('/user/{id}', 'update')->name('user.update');
