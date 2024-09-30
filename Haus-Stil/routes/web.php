@@ -21,8 +21,9 @@ Route::controller(HomeController::class)->group(function () {
     Route::post('/checkout', 'checkout')->middleware(['auth'])->name('checkout');
     Route::put('/checkout', 'storeCheckout')->name('checkout.store');
     Route::get('/blog', 'blog') ->name('home.blog'); 
-    Route::get('/contact', 'showFeedback')->middleware(['auth'])->name('home.feedback');    
+    Route::get('/contact', 'showFeedback')->name('home.feedback');    
     Route::post('/contact', 'sendFeedback')->name('feedback');   
+    Route::delete('/contact/{id}', 'deleteFeedback')->name('delete.feedback');   
     Route::get('/services', 'services')->name('home.services');  
     Route::get('/confirmed', 'confirmed')->name('home.confirmed');  
     

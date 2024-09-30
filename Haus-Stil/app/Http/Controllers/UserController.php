@@ -20,7 +20,7 @@ class UserController extends Controller
 
      public function __construct()
      {
-        $this->middleware('admin.mod:' . UType::Admin->value);
+        // $this->middleware('admin.mod:' . UType::Admin->value);
      }
 
      

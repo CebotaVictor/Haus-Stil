@@ -1,6 +1,7 @@
 @extends('layout.emptylayout')
 @section('content')
 <section style="background-color: #eee;">
+<link href="{{ asset('css/feedback_cart.css') }}" rel="stylesheet">
   <div class="container py-5">
     
 
@@ -94,7 +95,7 @@
            </div>
 
             <div class="mb-3 row">
-                <div class="col-sm-9 offset-sm-2">
+                <div class="col-sm-9 offset-sm-2">  
                     <button type="button" class="btn btn-primary" id="editButton" onclick="enableFields()">Edit</button>
                     <button type="submit" class="btn btn-success" id="saveButton" hidden>Save</button>
                 </div>
@@ -102,6 +103,8 @@
 
           </form>
 
+
+          
           <script>
             function enableFields(){
               document.getElementById("firstname").disabled = false;
@@ -115,8 +118,49 @@
           </script>
 
     </div>
-</div>
-</section>
+  </div>
+
+  
+  @if($user->user_type->value == 3&& !$feedbacks->empty())
+  <div class="p-4 p-md-5 text-center text-lg-start shadow-1-strong rounded" style="background-color: rgb(59,93,80);">
+  @foreach ($feedbacks as $feed)
+    @php
+      $user_from_feed = \App\Models\User::find($feed->user_id);
+    @endphp
+    <div class="row d-flex justify-content-center mt-3">
+      <div class="col-md-10">
+        <div class="card position-relative">
+          <div class="card-body m-3">
+            <div class="flex-shrink-0 ms-2 position-absolute" style="top: 10px; right: 10px;">
+              <form action="{{route('delete.feedback', $feed->id)}}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-link" title="Remove item" style="padding: 0; background: none; border: none;">
+                  <i class="fas fa-trash" style="color: #dc3545;"></i>
+                </button>
+              </form>
+            </div>
+            <div class="row">
+              <div class="col-lg-4 d-flex justify-content-center align-items-center mb-4 mb-lg-0">
+                <img src="{{ $imageUrl }}" class="rounded-circle img-fluid shadow-1" alt="woman avatar" width="100" height="100" />
+              </div>
+              <div class="col-lg-8">
+                <p class="fw-bold lead mb-2"><strong>{{$user_from_feed->username}}</strong></p>
+                <p class="fw-bold text-muted mb-0">Role : {{$user_from_feed->user_type->name}}</p>
+                <p class="text-muted fw-light mb-4">{{$feed->message}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    @endforeach
+  </div>
+  @endif
+
+  </div>
+
+  </section>
 @endsection
 
 

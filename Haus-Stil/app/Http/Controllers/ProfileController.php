@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enums\UType;
+use App\Models\Feedback;
 use App\Models\User;
 use App\Models\Image;
 use Illuminate\Http\Request;
@@ -15,7 +16,8 @@ class ProfileController extends Controller
     public function showProfile(){
         if (Auth::check()) {
             $user = Auth::user();
-            return view('profile.profile', compact('user'));
+            $feedbacks = Feedback::all();
+            return view('profile.profile', compact('user', 'feedbacks'));
         } else {
             return redirect()->route('login'); 
         }

@@ -26,10 +26,18 @@
                 <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
             </div>
 
+            
             <div class="form-group" style="width:20%;">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+                <label for="password-confirm">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
             </div>
+            
+            <div class="form-group" style="width:20%;">
+                <label for="password-confirm">Confirm password</label>
+                <input type="password" class="form-control" id="password-confirm" name="password_confirmation" required>
+            </div>
+
+           
 
             <div class="form-group mb-2" style="width:20%;">
                 <label for="image">Select Image</label>

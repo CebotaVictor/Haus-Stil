@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enums\UType;
+use App\Mail\FeedbackMail;
 use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Checkout;
@@ -105,12 +106,11 @@ class HomeController extends Controller
     public function sendFeedback(Request $request){
         if(auth()->user()){
             try {
-                $request->validate( [
+                $validatedData = $request->validate( [
                     'firstname' => ['required', 'string', 'max:255'],
                     'lastname' => ['required', 'string', 'max:255'],
                     'email' => ['required', 'string', 'email', 'max:255'],
                     'message' => ['required', 'string', 'max:350'],
-                    'user_type' => ['nullable', Rule::in(array_column(UType::cases(), 'value'))],
                 ]);
                 
                 $user = auth()->user();
@@ -122,10 +122,13 @@ class HomeController extends Controller
                     'email' => $request['email'],
                     'message' => $request['message'],
                     'user_id' => $user->id,
-                    'user_type' => $request['user_type'],
                 ]);
+                if($feedback){
+                    Mail::to($validatedData['email'])->send(new FeedbackMail($validatedData));
+                    return redirect()->route('home.feedback')->with('success', 'user created successfully.');     
+                }
+                else return redirect()->route('home.home')->with('error', 'mail error');
                 
-                return redirect()->route('user.read')->with('success', 'user created successfully.');
             } catch (ValidationException $e) {
                 // If validation fails, catch the error and inspect
                 dd($e->errors());  // Dump validation errors for inspection
@@ -134,6 +137,18 @@ class HomeController extends Controller
         else{
             return redirect()->route('home.home')->with('error','');
         }
+    }
+
+    public function deleteFeedback($id){
+        if(auth()->user()){
+            $feedback = Feedback::findOrFail($id);
+            if($feedback){
+                $feedback->delete();
+                return redirect()->route('home.feedback');
+            }
+            else return redirect()->route('profile')->with('error','');
+        }
+        else return redirect()->route('profile')->with('error','');
     }
 
     public function services(){

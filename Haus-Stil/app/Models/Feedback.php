@@ -16,18 +16,8 @@ class Feedback extends Model
         'email',
         'message',
         'user_id',
-        'user_type'
     ];
 
 
-
-    protected function casts(): array
-    {
-        
-        return [
-            'user_type' => UType::class,
-            'email_verified_at' => 'datetime',
-        ];
-    }
 }
 
