@@ -61,7 +61,7 @@ Route::controller(ProductController::class)->group(function () {
     Route::put('/prod/{id}', 'update')->name('prod.update');
     Route::get('/prod/{id}/edit', 'edit')->name('prod.edit');
     Route::delete('/prod/{id}', 'destroy')->name('prod.delete');
-    Route::get('/prod/{id}/details', 'details')->name('prod.details');
+    Route::get('/prod/details/{id}', 'details')->name('prod.details');
 }
 );
 
@@ -69,6 +69,9 @@ Route::controller(ProductController::class)->group(function () {
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'showProfile'])->name('profile');
 Route::put('/profile', [App\Http\Controllers\ProfileController::class, 'updateProfile'])->name('updateprofile');
 
+//review route
+Route::post('/review/{id}', [App\Http\Controllers\ReviewController::class, 'store'])->middleware(['auth'])->name('review.store');
+Route::delete('/review/{id}', [App\Http\Controllers\ReviewController::class, 'destroy'])->name('review.delete');
 
 //cart route
 Route::post('/cart/{id}', [App\Http\Controllers\CartController::class, 'store'])->name('cart.cart');
@@ -121,4 +124,3 @@ Route::get('email/resend',  [VerificationController::class, 'resend'])->name('ve
 
 
 // Home route
-Route::get('/home', [App\Http\Controllers\AuthController::class, 'index'])->name('home');

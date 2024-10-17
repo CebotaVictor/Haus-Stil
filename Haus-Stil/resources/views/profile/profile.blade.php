@@ -11,24 +11,19 @@
           <div class="card-body text-center">
           @auth
             @php
-                // Assuming $user->name includes the file extension
-                $imagePath = 'public/images/users/' . $user->username.'/'.$user->imageName; // Correct path for checking file existence
-
-                // Check if the file exists
+                $imagePath = 'public/images/users/' . $user->username.'/'.$user->imageName; 
                 $imageExists = Storage::exists($imagePath);
-                
                 // Get the public URL for the image if it exists
                 $imageUrl = $imageExists ? Storage::url($imagePath) : null;
             @endphp
 
             @if($imageUrl)
-                <img src="{{ $imageUrl }}" class="img-fluid mb-4" style="width: 250px;">
+                <img src="{{$imageUrl}}" class="img-fluid mb-4" style="width: 250px;">
             @else
                 <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" 
                     class="img-fluid mb-4" style="width: 250px;">
             @endif
           @endauth
-  
           </div>
         </div>
       </div>

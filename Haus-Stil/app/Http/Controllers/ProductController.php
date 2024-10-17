@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Mail\FeedbackMail;
 use App\Models\Category;
+use App\Models\Feedback;
 use App\Models\Image;
 use App\Models\Product;
+use App\Models\Review;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
@@ -29,8 +32,8 @@ class ProductController extends Controller
 
     public function details(string $id){
         $product = Product::find($id);
-
-        return view('products.product', compact('product'));
+        $reviews = Review::all();
+        return view('products.product', compact('product', 'reviews'));
     }
 
     /**

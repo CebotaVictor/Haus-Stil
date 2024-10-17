@@ -35,7 +35,9 @@
 								<tbody>
 									@foreach ($products as $prod)
 									@php
-										$prod_quantity = \App\Models\Cart::where('product_id', $prod['id'])->first();
+										$prod_quantity = \App\Models\Cart::where('product_id', $prod['id'])
+										->where('user_id', auth()->id())
+										->first();
 									@endphp
 									<tr>
 										<td>{{ $prod['name'] }}</td>
